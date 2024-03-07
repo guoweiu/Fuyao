@@ -15,6 +15,8 @@ add_compile_options(-fPIC)
 add_compile_options(-fexceptions)
 
 # deps
+set(ENABLE_LIB_ONLY 1) # used by nghttp2 to disable unnecessary component builds
+
 add_subdirectory(${BASE_DIR}/deps/abseil-cpp abseil)
 add_subdirectory(${BASE_DIR}/deps/fmt fmt)
 add_subdirectory(${BASE_DIR}/deps/GSL gsl)
