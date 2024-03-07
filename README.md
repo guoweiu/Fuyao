@@ -1,10 +1,10 @@
-Lumine
+Fuyao
 ---
 
 ## structure
 
 <pre><code>
-Lumine
+Fuyao
 |---deps
 |---lib
     |---base
@@ -27,4 +27,4 @@ Lumine
 
 ## How to use it?
 
-[Lumine-benchmarks](https://github.com/jxb2018/Lumine-benchmarks/tree/liyue)
+[Fuyao-benchmarks](https://github.com/guoweiu/Fuyao-benchmarks)
