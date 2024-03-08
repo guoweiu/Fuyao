@@ -21,6 +21,9 @@ typedef int (*faas_invoke_func_fn_t)(
         const char *input_data, size_t input_length,
         const char **output_data, size_t *output_length, PassingMethod method);
 
+// Return address of allocated memory space
+typedef void* (*faas_memalloc_t)(const char *caller_context, void *alloc_size);
+
 // Below are APIs that function library must implement.
 // For all APIs, return 0 on success.
 

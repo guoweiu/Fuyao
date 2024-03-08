@@ -35,6 +35,17 @@ namespace faas::worker_cpp {
     using protocol::IsRDMARequestMessage;
     using protocol::IsRDMAReclaimMessage;
 
+
+    //TODO: This function should allocate memory from the memory space mapped by memory-mapped files.
+    // The current implementation servers no purpose other than to prevent the need for large data copying.
+    void* MemAlloc(const char *func_name, void *alloc_size){
+        void *alloc_addr;
+        *(long *)alloc_size = 512;
+        int res = posix_memalign(&alloc_addr, 4096, 512);
+        if(res != 0) return nullptr;
+        return alloc_addr;
+    }
+
     FuncWorker::FuncWorker()
             : func_id_(-1), fprocess_id_(-1), client_id_(0), message_pipe_fd_(-1),
               use_engine_socket_(false), engine_tcp_port_(-1), use_fifo_for_nested_call_(false),

@@ -57,6 +57,8 @@ namespace faas::worker_cpp {
         uint64_t size;
     };
 
+    void* MemAlloc(const char* func_name, void *alloc_size);
+
     class FuncWorker {
     public:
         static constexpr absl::Duration kDefaultFuncCallTimeout = absl::Milliseconds(100);
@@ -194,9 +196,7 @@ namespace faas::worker_cpp {
 
         DISALLOW_COPY_AND_ASSIGN(FuncWorker);
 
-        //先轮询poll_timeout的时间，如果没有完成的CQE，再进入阻塞，等待cqe完成。fn为获取到cqe后的回调函数
-        //考虑设置一个有效的返回值以进行错误处理。
-//        static void poll_and_epoll_cqe(std::function<void(uint64_t)> fn, rdma::CompleteQueue queue,rdma::QueuePair * qp,int poll_timeout);
+//        void poll_and_epoll_cqe(std::function<void(uint64_t)> fn, rdma::CompleteQueue queue,rdma::QueuePair * qp,int poll_timeout);
     };
 
 }  // namespace faas
